@@ -1,0 +1,13 @@
+{
+  "name": "integra-o-com--ia",
+  "version": "1.0.0",
+  "description": "Um projeto desenvolvido pelos alunos do programa Desenvolve.",
+  "scripts": {
+    "dev:script": "node ./scripts/iaRequest.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
