@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integração IA - Frontend</title>
+</head>
+<body>
+    
+    <!-- cabeçalho -->
+    <header>
+         <h1>Pesquisa com IA</h1>
+    </header>
+
+    <!-- corpo da página -->
+    <main>
+
+        <label for="apiKey">API Key:</label>
+        <input type="text" id="apiKey" placeholder="Digite sua API Key">
+
+        <label for="modelo">Modelo:</label>
+        <select id="modelo">
+            <option value="">Selecione um modelo</option>
+            <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+            <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
+            <option value="gpt-4">gpt-4</option>
+            <option value="gpt-4-32k">gpt-4-32k</option>
+            <option value="gpt-4-turbo">gpt-4-turbo</option>
+            <option value="gpt-4o">gpt-4o</option>
+            <option value="gpt-4.1">gpt-4.1</option>
+            <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+            <option value="gpt-4.1-nano">gpt-4.1-nano</option>
+        </select>
+
+        <label for="pergunta">Pergunta:</label>
+        <input type="text" id="pergunta" placeholder="Digite sua pergunta">
+
+        <button id="btnPerguntar">Perguntar</button>
+
+        <div id="resposta"></div>
+
+    </main>
+
+    <!-- rodapé -->
+    <footer>
+        <p>A IA pode cometer erros. Verifique atentamente sua resposta</p>
+        <p>&copy; 2025 Group 3-10Desenvolve. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
