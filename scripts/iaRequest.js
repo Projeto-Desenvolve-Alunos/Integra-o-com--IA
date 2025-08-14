@@ -10,8 +10,6 @@ const models = [
   "gpt-4.1-nano"
 ]
 
-const geminiApiKey = 'AIzaSyBBuHs1ml4kInMNO4b94go2c0zsLISQwvM'
-
 const iaList = {
   openai: {
     url: 'https://api.openai.com/v1/chat/completions',
