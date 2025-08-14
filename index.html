@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integração IA - Frontend</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Integração IA</title>
 </head>
 <body>
-    
-    <!-- cabeçalho -->
     <header>
-         <h1>Pesquisa com IA</h1>
+        <h1>Pesquisa com IA</h1>
     </header>
-
-    <!-- corpo da página -->
     <main>
-
         <label for="apiKey">API Key:</label>
         <input type="text" id="apiKey" placeholder="Digite sua API Key">
-
         <label for="modelo">Modelo:</label>
         <select id="modelo">
             <option value="">Selecione um modelo</option>
@@ -31,21 +26,54 @@
             <option value="gpt-4.1">gpt-4.1</option>
             <option value="gpt-4.1-mini">gpt-4.1-mini</option>
             <option value="gpt-4.1-nano">gpt-4.1-nano</option>
+            <option value="gemini-pro">gemini-pro</option>
         </select>
-
         <label for="pergunta">Pergunta:</label>
         <input type="text" id="pergunta" placeholder="Digite sua pergunta">
-
         <button id="btnPerguntar">Perguntar</button>
-
         <div id="resposta"></div>
-
     </main>
-
-    <!-- rodapé -->
     <footer>
         <p>A IA pode cometer erros. Verifique atentamente sua resposta</p>
         <p>&copy; 2025 Group 3-10Desenvolve. Todos os direitos reservados.</p>
     </footer>
+    <script src="./scripts/iaRequest.js"></script>
+    <script>
+        const perguntaInput = document.getElementById('pergunta');
+        const respostaDiv = document.getElementById('resposta');
+        const apiKeyInput = document.getElementById('apiKey');
+        const modeloSelect = document.getElementById('modelo');
+        const btnPerguntar = document.getElementById('btnPerguntar');
+
+        const perguntarIA = async () => {
+            const pergunta = perguntaInput.value.trim();
+            const apiKey = apiKeyInput.value.trim();
+            const modelo = modeloSelect.value;
+
+            if (!pergunta || !apiKey || !modelo) {
+                respostaDiv.textContent = 'Preencha API Key, Modelo e Pergunta.';
+                return;
+            }
+
+            const ia = modelo.includes('gemini') ? 'gemini' : 'openai';
+            respostaDiv.textContent = 'Consultando IA...';
+
+            try {
+                const resposta = await iaRequest(pergunta, apiKey, ia, modelo);
+                respostaDiv.textContent = resposta;
+            } catch (err) {
+                respostaDiv.textContent = 'Erro na requisição: ' + err.message;
+            }
+        }
+
+        perguntaInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                perguntarIA();
+            }
+        });
+
+        btnPerguntar.addEventListener('click', perguntarIA);
+    </script>
 </body>
+
 </html>
