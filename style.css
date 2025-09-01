@@ -19,8 +19,9 @@ main {
     margin: 2rem auto;
     background: white;
     padding: 1.5rem;
-    border-radius: 4px;
+    border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 label {
@@ -29,27 +30,86 @@ label {
     font-weight: bold;
 }
 
-input, select {
+.input-with-button {
+    position: relative;
+}
+
+input, select, textarea {
     width: 100%;
     padding: 0.6rem;
-    margin-top: 0.3rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+
+.input-with-button input#apiKey {
+    margin-top: 0.3rem;
+    padding-right: 40px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 5px;
+    top: calc(50% + 0.15rem);
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    margin: 0;
+}
+
+.toggle-btn:hover {
+    background-color: transparent; 
+    transform: translateY(-50%);
+}
+
+#charCount {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.2rem;
+    text-align: right;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 button {
-  background-color: #e21;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  margin-top: 20px;
-  border: none;
-  font-size: 15px #000;
+    flex: 1;
+    background-color: #e21;
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 button:hover {
     background-color: #900;
+    transform: scale(1.05);
 }
 
 #resposta {
@@ -60,6 +120,8 @@ button:hover {
     border-radius: 4px;
     min-height: 50px;
     color: #333;
+    line-height: 1.5;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 #resposta:empty::before {
@@ -67,7 +129,6 @@ button:hover {
     color: #aaa;
     font-style: italic;
 }
-
 
 footer {
     text-align: center;
@@ -78,3 +139,23 @@ footer {
     margin-top: 2rem;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 0.6rem;
+    }
+
+    #resposta {
+        font-size: 16px;
+    }
+}
